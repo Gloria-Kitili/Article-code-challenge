@@ -1,4 +1,4 @@
-class Article
+class < Article
     attr_reader :title :author :magazine
 
     @@all = [] 

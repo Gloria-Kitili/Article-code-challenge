@@ -1,4 +1,4 @@
-class Magazine 
+class  Magazine 
     attr_reader :name :category
 
     @@all = []

@@ -1,5 +1,5 @@
-class Author
-    attr-reader :name
+class < Author
+    attr_reader :name
 
     def initialize(name)
         @name = name 
