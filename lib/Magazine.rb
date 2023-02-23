@@ -1,44 +1,40 @@
 class  Magazine 
-    attr_reader :name :category
+    attr_accessor :name, :category
 
     @@all = []
 
     def initialize(name, category)
         @name = name 
         @category = category
-        @contributors = []
         @@all << self 
-    end 
+    end
 
     def self.all
-        @@all.dup.freeze
+        @@all
     end
 
     def self.find_by_name(name)
-        @@all.find{ |magazine| magazine.name == name }
+        @@all.find { |magazine| magazine.name == name }
     end 
 
-    def name=(new_name)
-        @name = new_name
-    end
+     def article_titles
+        Article.all.select { |article| article.magazine == self }.map { |article| article.title}
+     end 
 
-    def category=(new_category)
-        @category = new_category
-    end
-
-    def contributors
-        @contributors.dup.freeze
-    end 
-
-    def article_titles
-        @contributors << author 
-    end 
-
-    def article_titles 
-        @contributors.flat_map {|author| author.articles.select { |article| article.magazine == self} } 
-    end
-
-    def contributing_authors
-        @contributors.select { |author| author.articles.count { |article| article.magazine == self } >2 }
+     def contributing_authors 
+        author_counts = {}
+        Article.all.each do |article|
+        if article.magazine == self
+            author_counts[article.author] || 0
+            author_counts[article.author] += 1
+        end
     end
 end
+end
+
+    magazine1 = Magazine.new("Tech World", "Fashion designs")
+    magazine2 = Magazine.new("Beauty Tips", "Nail Gel tips")
+    magazine3 = Magazine.new("Travel Journal", "Travel Packages")
+  
+    
+    

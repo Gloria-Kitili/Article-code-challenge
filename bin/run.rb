@@ -2,6 +2,7 @@
 
 
 require 'pry'
-require_relative '../config/enviroment'
+require_relative 'classes'
+'
 
 binding.pry
