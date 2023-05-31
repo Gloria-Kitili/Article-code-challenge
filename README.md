@@ -1,3 +1,4 @@
+
 # Article-code-challenge
 
 The Author and Magazine classes have been updated to reflect the many-to-many relationship between them. This is done by using an Article class as a join model that belongs to both Author and Magazine.
